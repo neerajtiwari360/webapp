@@ -1,0 +1,46 @@
+{% extends "basic.html" %}
+
+{% load static %}
+
+{% block load_css %}
+    <link rel="stylesheet" href="{% static 'home.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+    <div id="main_div">
+        <a download = "result.jpeg" href="{{ current_img.modified.url }}" id="down_link">
+            <p id="down_but">Download</p>
+        </a>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div id="div1">
+                <p id="dummy_input">Upload image</p>
+                {{ form }}                
+            </div>    
+        </form>
+    
+        <div id="div3">
+            <button onclick="previewImage()" id="prev_img">Preview Image</button>
+        </div>
+
+        <div id="div2">
+            <button onclick="submitImage1()" name="Submit" value="RGB_GRAY" id="submit1">RGB to GARY</button>
+            <button onclick="submitImage2()" name="Submit" value="RGB_XYZ" id="submit2">Flip Image</button>
+            <!-- <input type="submit" name="Submit" value="RGB to GRAY" id="submit1">
+                        <input type="submit" name="Submit" value="Flip Image" id="submit2"> -->
+        </div>
+    </div>     
+
+    <div id="ori_img">
+        <img id="preview" src="{{ current_img.img.url|default_if_none:'#' }}" alt="Original Image" style="width: 100%;">
+    </div>
+
+    <div id="mod_img">
+        <img id="modified" src="{{ current_img.modified.url|default_if_none:'#' }}" alt="Modified Image" style="width: 100%;">
+    </div>   
+
+    <script src="{% static '/home.js' %}" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+{% endblock %}

@@ -19,11 +19,12 @@ from sample_api.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', rgb_gray, name="rgb_gray")
+    path('', rgb_gray, name="rgb_gray"),
+    path('submit1/', submit1, name="submit1"),
+    path('submit2/', submit2, name="submit2"),
 ]
 
 from django.conf import settings
 from django.conf.urls.static import static
 if settings.DEBUG:
-        urlpatterns += static(settings.MEDIA_URL,
-                              document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
