@@ -69,19 +69,23 @@ def submit1(request):
         print("*****")
         print(request.FILES)
         print(request.POST)
-        print("*****")
+        
         # Get the image file from the POST request
         image_file = request.FILES['image']
         myfile = image_file.read()
         np_img = cv2.imdecode(np.frombuffer(myfile , np.uint8), cv2.IMREAD_UNCHANGED)
         
-        # print(np_image)
+        print(np_img.shape)
+        print("*****")
         # print(type(np_image))
         
         # np_img = cv2.imread("media/" + image_file)
             
-        gray_img = cv2.cvtColor(np_img, cv2.COLOR_BGR2GRAY)            
-        gray_img1 = cv2.imencode('.jpeg', gray_img)[1]
+        if (len(np_img.shape) == 3):
+            gray_img = cv2.cvtColor(np_img, cv2.COLOR_BGR2GRAY)            
+            gray_img1 = cv2.imencode('.jpeg', gray_img)[1]
+        elif (len(np_img.shape) < 3):
+            gray_img1 = cv2.imencode('.jpeg', np_img)[1]
         file = ContentFile(gray_img1)
         
         # Encode the modified image as a base64 string

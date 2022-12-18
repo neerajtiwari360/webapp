@@ -9,6 +9,7 @@ imageInput.onchange = function(){
 
 function previewImage() {
     const preview = document.getElementById('preview');
+    const modified = document.getElementById('modified');
     const imageInput = document.getElementById('imageInput');
 
     // console.log(preview.src);
@@ -39,6 +40,7 @@ function previewImage() {
     {
         console.log("@@@@");
         preview.src = window.location.origin.concat('/media/original.png');
+        modified.src = window.location.origin.concat('/media/modified.png');
         document.getElementById("prev_img").innerHTML = "Preview image";
     }  
 }
