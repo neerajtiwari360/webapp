@@ -90,8 +90,8 @@ function submitImage1() {
                 modified.src = 'data:image/png;base64,' + data;
                 download_link.href = 'data:image/png;base64,' + data;
 
-                // modified.src = '/home/poorna/Desktop/Meta Brix/webapp/app2/tracer/object/custom_dataset/test.png';
-                // download_link.href = '/home/poorna/Desktop/Meta Brix/webapp/app2/tracer/object/custom_dataset/test.png';
+                // modified.src = '/tracer/object/custom_dataset/test.png';
+                // download_link.href = '/tracer/object/custom_dataset/test.png';
             },
             error: function(data) {
                 console.log('image-fail');

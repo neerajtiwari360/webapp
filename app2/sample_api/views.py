@@ -48,14 +48,36 @@ def submit1(request):
         
         # np_img = cv2.imread("media/" + image_file)
         cv2.imwrite("tracer/data/custom_dataset/test.png", np_img)
-        # main.main("runserver")
+        
         os.system("pwd")
         os.system("python3 tracer/main.py")
-        mask_img = cv2.imread("tracer/mask/custom_dataset/test.png")
-        mask_img1 = cv2.imencode('.png', mask_img)[1]
-        print("*****")
         
-        # Encode the modified image as a base64 string
+        mask_img = cv2.imread("tracer/mask/custom_dataset/test.png")
+        
+        out_img = mask_img
+        out_img = out_img/255
+
+        out_img[out_img > 0.9] = 1
+        out_img[out_img <= 0.9] = 0
+
+        shape = out_img.shape
+        a_layer_init = np.ones(shape = (shape[0],shape[1],1))
+        mul_layer = np.expand_dims(out_img[:,:,0],axis=2)
+        a_layer = mul_layer*a_layer_init
+        rgba_out = np.append(out_img,a_layer,axis=2)
+
+        inp_img = np_img
+        inp_img = inp_img/255
+
+        a_layer = np.ones(shape = (shape[0],shape[1],1))
+        rgba_inp = np.append(inp_img,a_layer,axis=2)
+
+        rem_back = (rgba_inp*rgba_out)
+        rem_back_scaled = rem_back*255
+  
+        print("**!@#***")
+        
+        mask_img1 = cv2.imencode('.png', rem_back_scaled)[1]
         modified_image_data = base64.b64encode(mask_img1).decode('utf-8')
 
         # Return the modified image data as the response
