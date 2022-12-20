@@ -141,7 +141,12 @@ def gt_to_tensor(gt):
     gt = cv2.imread(gt)
     gt = cv2.cvtColor(gt, cv2.COLOR_BGR2GRAY) / 255.0
     gt = np.where(gt > 0.5, 1.0, 0.0)
-    gt = torch.tensor(gt, device='cuda', dtype=torch.float32)
+    
+    if torch.cuda.is_available():
+        gt = torch.tensor(gt, device='cuda', dtype=torch.float32)
+    else:
+        gt = torch.tensor(gt, device='cpu', dtype=torch.float32)
+        
     gt = gt.unsqueeze(0).unsqueeze(1)
 
     return gt
