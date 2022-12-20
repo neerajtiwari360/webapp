@@ -1,4 +1,4 @@
-# webapp
+# Webapp - App1
 Demo webapp, with react frontend and django backend for basic image processing.
 
 ## Running the app
