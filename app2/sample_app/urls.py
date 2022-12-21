@@ -28,5 +28,3 @@ from django.conf import settings
 from django.conf.urls.static import static
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += static('/tracer/object/custom_dataset/',
-                      document_root='/home/poorna/Desktop/Meta Brix/webapp/app2/tracer/object/custom_dataset')

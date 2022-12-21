@@ -48,12 +48,12 @@ def submit1(request):
         # print(type(np_image))
         
         # np_img = cv2.imread("media/" + image_file)
-        cv2.imwrite("tracer/data/custom_dataset/test.png", np_img)
+        cv2.imwrite("media/original/test.png", np_img)
         
         os.system("pwd")
         os.system("python3 tracer/main.py")
         
-        mask_img = cv2.imread("tracer/mask/custom_dataset/test.png")
+        mask_img = cv2.imread("media/original/test.png")
         
         out_img = mask_img
         out_img = out_img/255
@@ -94,8 +94,8 @@ def submit1(request):
 def change_bg(request):
     context = {}
     if (request.method == "POST"):
-        ori_img = cv2.imread("tracer/data/custom_dataset/test.png")
-        mask_img = cv2.imread("tracer/mask/custom_dataset/test.png")
+        ori_img = cv2.imread("media/original/test.png")
+        mask_img = cv2.imread("media/mask/test.png")
         
         if (request.POST["bg_num"] != '-1'):           
             temp = request.POST["img_src"].split('/')

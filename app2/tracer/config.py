@@ -5,8 +5,8 @@ def getConfig():
     # parser.add_argument('project', type=str, default='runserver', help='Django admin options')
     parser.add_argument('--action', type=str, default='inference', help='Model Training or Testing options')
     parser.add_argument('--exp_num', default=0, type=str, help='experiment_number')
-    parser.add_argument('--dataset', type=str, default='custom_dataset/', help='DUTS')
-    parser.add_argument('--data_path', type=str, default='tracer/data/')
+    parser.add_argument('--dataset', type=str, default='original/', help='DUTS')
+    parser.add_argument('--data_path', type=str, default='media/')
 
     # Model parameter settings
     parser.add_argument('--arch', type=str, default='7', help='Backbone Architecture')

@@ -40,8 +40,8 @@ class Inference():
                                       num_workers=args.num_workers, transform=self.test_transform)
 
         if args.save_map is not None:
-            os.makedirs(os.path.join('tracer', 'mask', self.args.dataset), exist_ok=True)
-            os.makedirs(os.path.join('tracer', 'object', self.args.dataset), exist_ok=True)
+            os.makedirs(os.path.join('media', 'mask'), exist_ok=True)
+            os.makedirs(os.path.join('media', 'modified'), exist_ok=True)
 
     def test(self):
         self.model.eval()
@@ -64,8 +64,8 @@ class Inference():
 
                         salient_object = self.post_processing(images[i], output, h, w)
                         print(salient_object.shape)
-                        cv2.imwrite(os.path.join('tracer', 'mask', self.args.dataset, image_name[i] + '.png'), output)
-                        cv2.imwrite(os.path.join('tracer', 'object', self.args.dataset, image_name[i] + '.png'), salient_object)
+                        cv2.imwrite(os.path.join('media', 'mask', image_name[i] + '.png'), output)
+                        cv2.imwrite(os.path.join('media', 'modified', image_name[i] + '.png'), salient_object)
 
         print(f'time: {time.time() - t:.3f}s')
 
