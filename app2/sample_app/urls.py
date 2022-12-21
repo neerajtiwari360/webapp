@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', rgb_gray, name="rgb_gray"),
     path('submit1/', submit1, name="submit1"),
+    path('change_bg/', change_bg, name="change_bg"),
 ]
 
 from django.conf import settings

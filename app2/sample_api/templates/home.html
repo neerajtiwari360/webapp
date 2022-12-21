@@ -8,9 +8,14 @@
 
 {% block content %}
     <div id="main_div">
-        <a download = "result.png" href="{{ current_img.modified.url }}" id="down_link">
-            <p id="down_but">Download</p>
-        </a>
+        <div id = "div4">
+            <a download="result.png" href="{{ current_img.modified.url }}" id="down_link1">
+                <p id="down_but1">Download</p>
+            </a>
+            <a download="mask.png" href="{{ current_img.modified.url }}" id="down_link2">
+                <p id="down_but2">Download Mask</p>
+            </a>
+        </div>        
 
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -26,7 +31,7 @@
 
         <div id="div2">
             <!-- <button onclick="submitImage1()" name="Submit" value="tracer_mask" id="submit1">TRACER Mask</button> -->
-            <button onclick="submitImage1()" name="Submit" value="tracer_mask" id="submit2">TRACER Mask</button>
+            <button onclick="submitImage1('-1', '')" name="Submit" value="tracer_mask" id="submit2">TRACER Mask</button>
             <!-- <input type="submit" name="Submit" value="RGB to GRAY" id="submit1">
                         <input type="submit" name="Submit" value="Flip Image" id="submit2"> -->
         </div>
@@ -39,6 +44,16 @@
     <div id="mod_img">
         <img id="modified" src="{{ current_img.modified.url|default_if_none:'#' }}" alt="Modified Image" style="width: 100%;">
     </div>   
+
+    <div id = "bg_imgs">
+        <button onclick="bg_func()" value=1 class="bg_img_but">
+            <img class="bg_img" src="media/background/bg1.jpg" alt="Background1">
+        </button>        
+        
+        <button onclick="bg_func()" value=2 class="bg_img_but">
+            <img class="bg_img" src="media/background/bg2.jpeg" alt="Background2">
+        </button>
+    </div>
 
     <script src="{% static '/home.js' %}" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>

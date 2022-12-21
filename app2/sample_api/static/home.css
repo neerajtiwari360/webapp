@@ -9,23 +9,28 @@
 
 
 #ori_img {
-    width: 35%;
+    width: 30%;
     border: 1px solid #000;
     border-radius: 10px;
     float: left;
     margin: 2%;
-    margin-left: 8%;
-    padding: 2%;
+    margin-left: 5%;
+    margin-right: 1%;
+    padding: 1%;
+    /* background-color: #7a4caf; */
 }
 
 #mod_img {
-    width: 35%;
+    width: 30%;
     border: 1px solid #000;
     border-radius: 10px;
-    float: right;
-    margin: 2%;
-    margin-right: 8%;
-    padding: 2%;
+    float: left;
+    /* margin: 2%; */
+    /* margin-right: 8%; */
+    margin-top: 2%;
+    margin-left: 2%;
+    padding: 1%;
+    /* background-color: #af604c; */
 }
 
 #imageInput {
@@ -98,33 +103,8 @@
     background-color: #4CAF50;
 }
 
-#down_but {
-    display: block;
-    width: 13%;
-    text-align: center;
-    background-color: #c8e2c9;
-    color: black;
-    padding: 0.8%;
-    padding-left: 0%;
-    padding-right: 0%;
-    /* margin: 8px 0; */
-    margin-top: 0.2%;
-    margin-bottom: 0%;
-    border: 1px solid #000;
-    border-radius: 4px;
-    cursor: pointer;
-    /* margin-right: 21%; */
-    /* margin-left: 64%; */
-    float: right;
-    font-family: 'Times New Roman';
-    font-size: 100%;
-}
 
-#down_but:hover {
-    background-color: #4CAF50;
-}
-
-#submit1 {
+#submit1, #down_but1 {
     display: block;
     width: 48%;
     text-align: center;
@@ -146,7 +126,7 @@
     font-size: 100%;
 }
 
-#submit2 {
+#submit2, #down_but2 {
     display: block;
     width: 48%;
     text-align: center;
@@ -168,6 +148,14 @@
     font-size: 100%;
 }
 
+#down_but1, #down_but2 {
+    background-color: #c8e2c9;
+}
+
+#down_but1:hover, #down_but2:hover {
+    background-color: #4CAF50;
+}
+
 #submit1:hover {
     background-color: #45a049;
 }
@@ -180,8 +168,8 @@
     border-radius: 5px;
     background-color: #ddd;
     padding: 1%;
-    width: 82%;
-    margin-left: 8%;
+    width: 90%;
+    margin-left: 5%;
     height: 45px;
 }
 
@@ -216,4 +204,34 @@
     height: 42px;
     /* margin-bottom: 1%; */
     /* margin-top: 0.37%; */
+}
+
+#div4 {
+    /* background-color: rgb(222, 22, 192); */
+    float: right;
+    padding: 0.3%;
+    width: 30%;
+    height: 40px;
+    margin-right: 0.9%;
+    /* padding-bottom: 0%; */
+    padding-top: 0.1%;
+    /* margin-bottom: 0%; */
+}
+
+#bg_imgs {
+    /* background-color: #7a4caf; */
+    float: right;
+    width: 20%;
+    margin-right: 3%;
+    margin-top: 2%;
+    padding: 1%;
+}
+
+.bg_img {
+    width: 100%;
+}
+
+.bg_img_but {
+    padding: 2%;
+    /* background-color: #af604c; */
 }
