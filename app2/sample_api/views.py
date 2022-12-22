@@ -56,10 +56,10 @@ def submit1(request):
         mask_img = cv2.imread("media/mask/test.png")
         
         out_img = mask_img
-        # out_img = out_img/255
+        out_img = out_img/255
 
-        # out_img[out_img > 0.9] = 1
-        # out_img[out_img <= 0.9] = 0
+        out_img[out_img > 0.9] = 1
+        out_img[out_img <= 0.9] = 0
 
         shape = out_img.shape
         a_layer_init = np.ones(shape = (shape[0],shape[1],1))

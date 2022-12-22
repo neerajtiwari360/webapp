@@ -76,7 +76,6 @@ function submitImage1(bg_num, img_src) {
     const preview = document.getElementById('preview');
     const modified = document.getElementById('modified');
     const imageInput = document.getElementById('imageInput'); 
-    const bgInput = document.getElementById('bgInput'); 
     const download_link1 = document.getElementById('down_link1'); 
     const download_link2 = document.getElementById('down_link2'); 
 
@@ -123,70 +122,81 @@ function submitImage1(bg_num, img_src) {
                 contentType : false,
                 processData : false,
                 success : function(response) {
-                    console.log('success');
+                    console.log('success1');
                     // console.log(data);
-                    modified.src = 'data:image/png;base64,' + response.data;
-                    document.getElementById("process").style.opacity = "0";
-                    document.getElementById("modified").style.opacity = "1";
+                    // modified.src = 'data:image/png;base64,' + response.data;
+                    // document.getElementById("process").style.opacity = "0";
+                    // document.getElementById("modified").style.opacity = "1";
 
-                    download_link1.href = 'data:image/png;base64,' + response.data;
+                    // download_link1.href = 'data:image/png;base64,' + response.data;
                     download_link2.href = 'data:image/png;base64,' + response.mask;
+                    flag = 1;
+                    change_back(bg_num, img_src);
                 },
                 error: function(data) {
-                    console.log('image-fail');
+                    console.log('image-fail1');
                 }
             });
-            flag = 1;
         }
-        
-        var formData = new FormData();
-        formData.append('bg_num', bg_num);
-
-        if (bg_num == 0)
-        {
-            if (bgInput.files && bgInput.files[0])
-            { formData.append('img_src', bgInput.files[0]); }
-            else
-            { 
-                modified.src = window.location.origin.concat('/media/modified.png');
-                document.getElementById("process").style.opacity = "0";
-                document.getElementById("modified").style.opacity = "1";
-
-                return 
-            }
-        }        
-        else
-        { formData.append('img_src', img_src); }
-        
-
-        console.log("--------");
-        for (var key of formData.entries()) {
-            console.log(key[0] + ', ' + key[1]);
+        else {
+            change_back(bg_num, img_src);
         }
-        console.log("--------");
-
-        $.ajax({
-            url         : "/change_bg/",
-            type        : 'POST',
-            // async       : false, 
-            data        : formData,
-            cache       : false,
-            contentType : false,
-            processData : false,
-            success : function(response) {
-                console.log('success');
-                // console.log(response.data);
-                modified.src = 'data:image/png;base64,' + response.data;
-                document.getElementById("process").style.opacity = "0";
-                document.getElementById("modified").style.opacity = "1";
-
-                download_link1.href = 'data:image/png;base64,' + response.data;
-            },
-            error: function(data) {
-                console.log('image-fail');
-            }
-        });   
+         
     }
+}
+
+function change_back(bg_num, img_src) {
+    const bgInput = document.getElementById('bgInput'); 
+    const modified = document.getElementById('modified');
+    const download_link1 = document.getElementById('down_link1'); 
+
+    var formData = new FormData();
+    formData.append('bg_num', bg_num);
+
+    if (bg_num == 0)
+    {
+        if (bgInput.files && bgInput.files[0])
+        { formData.append('img_src', bgInput.files[0]); }
+        else
+        { 
+            modified.src = window.location.origin.concat('/media/modified.png');
+            document.getElementById("process").style.opacity = "0";
+            document.getElementById("modified").style.opacity = "1";
+
+            return ;
+        }
+    }        
+    else
+    { formData.append('img_src', img_src); }
+    
+
+    console.log("--------");
+    for (var key of formData.entries()) {
+        console.log(key[0] + ', ' + key[1]);
+    }
+    console.log("--------");
+
+    $.ajax({
+        url         : "/change_bg/",
+        type        : 'POST',
+        // async       : false, 
+        data        : formData,
+        cache       : false,
+        contentType : false,
+        processData : false,
+        success : function(response) {
+            console.log('success2');
+            // console.log(response.data);
+            modified.src = 'data:image/png;base64,' + response.data;
+            document.getElementById("process").style.opacity = "0";
+            document.getElementById("modified").style.opacity = "1";
+
+            download_link1.href = 'data:image/png;base64,' + response.data;
+        },
+        error: function(data) {
+            console.log('image-fail2');
+        }
+    });  
 }
 
 function bg_func() {
