@@ -86,7 +86,7 @@ function submitImage1(bg_num, img_src) {
         document.getElementById("process").style.opacity = "1";
         document.getElementById("modified").style.opacity = 0;
         // $("#modified").css("opacity", 0);
-        modified.src = window.location.origin.concat('/media/original.png');
+        // modified.src = window.location.origin.concat('/media/original.png');
         console.log(">>>", document.getElementById("modified").style.opacity);
         console.log(">>>", modified.src);
 
