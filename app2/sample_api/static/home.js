@@ -5,11 +5,30 @@ var flag = 0
 imageInput.onchange = function(){
     preview.src = "media/original.png";
     modified.src = "media/modified.png";
+    document.getElementById("process").style.opacity = "0";
+    document.getElementById("modified").style.opacity = "1";
+
     document.getElementById("prev_img").innerHTML = "Preview image";
     flag = 0;
 }
-bg_func();
 
+var bgInput = document.getElementById('bgInput');
+var bg_preview = document.getElementById('bg_preview');
+bgInput.onchange = function(){
+    if (bgInput.files && bgInput.files[0]) {
+        const reader = new FileReader();
+
+        // Set the preview image source
+        reader.onload = function (e) {
+            bg_preview.src = e.target.result;
+        }
+        reader.readAsDataURL(bgInput.files[0]);
+        preview.style.display = "block";
+    }  
+    else {
+        bg_preview.src = "media/background.png";
+    }
+}
 
 function previewImage() {
     const preview = document.getElementById('preview');
@@ -45,6 +64,9 @@ function previewImage() {
         console.log("@@@@");
         preview.src = window.location.origin.concat('/media/original.png');
         modified.src = window.location.origin.concat('/media/modified.png');
+        document.getElementById("process").style.opacity = "0";
+        document.getElementById("modified").style.opacity = "1";
+
         document.getElementById("prev_img").innerHTML = "Preview image";
     }  
 }
@@ -54,11 +76,20 @@ function submitImage1(bg_num, img_src) {
     const preview = document.getElementById('preview');
     const modified = document.getElementById('modified');
     const imageInput = document.getElementById('imageInput'); 
+    const bgInput = document.getElementById('bgInput'); 
     const download_link1 = document.getElementById('down_link1'); 
     const download_link2 = document.getElementById('down_link2'); 
 
+
     if (imageInput.files && imageInput.files[0]) 
     {
+        document.getElementById("process").style.opacity = "1";
+        document.getElementById("modified").style.opacity = 0;
+        // $("#modified").css("opacity", 0);
+        modified.src = window.location.origin.concat('/media/original.png');
+        console.log(">>>", document.getElementById("modified").style.opacity);
+        console.log(">>>", modified.src);
+
         if (flag == 0)
         {
             const reader = new FileReader();
@@ -95,6 +126,9 @@ function submitImage1(bg_num, img_src) {
                     console.log('success');
                     // console.log(data);
                     modified.src = 'data:image/png;base64,' + response.data;
+                    document.getElementById("process").style.opacity = "0";
+                    document.getElementById("modified").style.opacity = "1";
+
                     download_link1.href = 'data:image/png;base64,' + response.data;
                     download_link2.href = 'data:image/png;base64,' + response.mask;
                 },
@@ -107,7 +141,23 @@ function submitImage1(bg_num, img_src) {
         
         var formData = new FormData();
         formData.append('bg_num', bg_num);
-        formData.append('img_src', img_src);
+
+        if (bg_num == 0)
+        {
+            if (bgInput.files && bgInput.files[0])
+            { formData.append('img_src', bgInput.files[0]); }
+            else
+            { 
+                modified.src = window.location.origin.concat('/media/modified.png');
+                document.getElementById("process").style.opacity = "0";
+                document.getElementById("modified").style.opacity = "1";
+
+                return 
+            }
+        }        
+        else
+        { formData.append('img_src', img_src); }
+        
 
         console.log("--------");
         for (var key of formData.entries()) {
@@ -127,6 +177,9 @@ function submitImage1(bg_num, img_src) {
                 console.log('success');
                 // console.log(response.data);
                 modified.src = 'data:image/png;base64,' + response.data;
+                document.getElementById("process").style.opacity = "0";
+                document.getElementById("modified").style.opacity = "1";
+
                 download_link1.href = 'data:image/png;base64,' + response.data;
             },
             error: function(data) {
@@ -147,5 +200,6 @@ function bg_func() {
 var bg_onclick = function(event) {
     console.log(event.target.src);
     console.log(this, this.value);
+    console.log("?><?><")
     submitImage1(this.value, event.target.src);
 };

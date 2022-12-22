@@ -42,10 +42,27 @@
     </div>
 
     <div id="mod_img">
+        <p id="process">Processing</p>
         <img id="modified" src="{{ current_img.modified.url|default_if_none:'#' }}" alt="Modified Image" style="width: 100%;">
     </div>   
 
     <div id = "bg_imgs">
+        <form method="POST" enctype="multipart/form-data" id="form_2">
+            {% csrf_token %}
+            <div id="div5">
+                <p id="dummy_bg_input">Upload Background</p>
+                <input type="file" name="bg_img" id="bgInput" accept="image/*">
+            </div>
+        </form>
+
+        <div id="bg_upload_img">
+            <button onclick="bg_func()" value=0 class="bg_img_but">
+                <img class="bg_img" id="bg_preview" src="/media/background.png" alt="Background0">
+            </button>
+        </div>
+
+        <p id="or">(or)</p>
+
         <button onclick="bg_func()" value=1 class="bg_img_but">
             <img class="bg_img" src="media/background/bg1.jpg" alt="Background1">
         </button>        

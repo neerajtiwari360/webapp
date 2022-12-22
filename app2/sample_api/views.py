@@ -53,13 +53,13 @@ def submit1(request):
         os.system("pwd")
         os.system("python3 tracer/main.py")
         
-        mask_img = cv2.imread("media/original/test.png")
+        mask_img = cv2.imread("media/mask/test.png")
         
         out_img = mask_img
-        out_img = out_img/255
+        # out_img = out_img/255
 
-        out_img[out_img > 0.9] = 1
-        out_img[out_img <= 0.9] = 0
+        # out_img[out_img > 0.9] = 1
+        # out_img[out_img <= 0.9] = 0
 
         shape = out_img.shape
         a_layer_init = np.ones(shape = (shape[0],shape[1],1))
@@ -97,22 +97,18 @@ def change_bg(request):
         ori_img = cv2.imread("media/original/test.png")
         mask_img = cv2.imread("media/mask/test.png")
         
-        if (request.POST["bg_num"] != '-1'):           
-            temp = request.POST["img_src"].split('/')
-            temp_file = '/'.join(temp[-3:])
-            print("???", temp_file)
-            
-            bg_img = cv2.imread(temp_file)
-            
-            # print(ori_img.shape)
-            # print(mask_img.shape)
-            # print(bg_img.shape)
+        if (request.POST["bg_num"] == '0'):
+            print("~~~", request.FILES)
+            print("~~~", request.POST)
+            image_file = request.FILES['img_src']
+            myfile = image_file.read()
+            bg_img = cv2.imdecode(np.frombuffer(myfile , np.uint8), cv2.IMREAD_UNCHANGED)
             out_img = center_img(ori_img, bg_img, mask_img)
         
             out_img1 = cv2.imencode('.png', out_img)[1]
             modified_image_data1 = base64.b64encode(out_img1).decode('utf-8')
-        
-        else:            
+            
+        elif (request.POST["bg_num"] == '-1'):
             out_img = mask_img
             out_img = out_img/255
 
@@ -136,6 +132,24 @@ def change_bg(request):
                 
             rem_img1 = cv2.imencode('.png', rem_back_scaled)[1]
             modified_image_data1 = base64.b64encode(rem_img1).decode('utf-8')
+            
+        else:
+            print("$$$", request.FILES)
+            print("$$$", request.POST)
+            temp = request.POST["img_src"].split('/')
+            temp_file = '/'.join(temp[-3:])
+            print("???", temp_file)
+            
+            bg_img = cv2.imread(temp_file)
+            
+            # print(ori_img.shape)
+            # print(mask_img.shape)
+            # print(bg_img.shape)
+            out_img = center_img(ori_img, bg_img, mask_img)
+        
+            out_img1 = cv2.imencode('.png', out_img)[1]
+            modified_image_data1 = base64.b64encode(out_img1).decode('utf-8')           
+            
 
         return JsonResponse({"data" : modified_image_data1})
     else:
