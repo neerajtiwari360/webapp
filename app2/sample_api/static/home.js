@@ -117,8 +117,8 @@ function submitImage1(bg_num, img_src) {
             $.ajax({
                 url         : "/submit1/",
                 type        : 'POST',
-                async       : false, 
                 data        : formData,
+                // async       : false, 
                 cache       : false,
                 contentType : false,
                 processData : false,
@@ -168,7 +168,7 @@ function submitImage1(bg_num, img_src) {
         $.ajax({
             url         : "/change_bg/",
             type        : 'POST',
-            async       : false, 
+            // async       : false, 
             data        : formData,
             cache       : false,
             contentType : false,

@@ -30,6 +30,7 @@
     margin-top: 2%;
     margin-left: 0.3%;
     padding: 1%;
+    align-items: center;
     /* background-color: #af604c; */
 }
 
@@ -322,12 +323,12 @@
 }
 
 #process {
-    /* background-color: blue; */
+    background-color: blue;
     padding: 1%;
     padding-left: 2%;
     padding-right: 2%;
-    margin-left: 9%;
-    margin-top: 9%;
+    margin-left: 11.7%;
+    margin-top: 15%;
     font-family: 'Times New Roman';
     font-size: large;
     position: absolute;
