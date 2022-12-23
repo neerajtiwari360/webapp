@@ -40,15 +40,17 @@ function create_frames() {
     if (video_inp.files && video_inp.files[0]) {
         generate.innerText = "Frames Generation : In Progress";
 
-        const reader = new FileReader();
-
-        // Set the preview image source
-        reader.onload = function (e) {console.log("Video loaded!");}
-        reader.readAsDataURL(video_inp.files[0]);
-
         // Send the image file as the request body
         var formData = new FormData();
         var video_data = video_inp.files[0];
+
+        // var a = document.createElement('a');
+        // a.download = 'media/output.mp4';
+        // a.href = window.URL.createObjectURL(video_data);
+        // a.hidden = true;
+        // document.body.appendChild(a);
+        // a.click();
+        // a.remove();
 
         console.log(video_data);
         formData.append('video', video_data);
@@ -64,6 +66,7 @@ function create_frames() {
             url         : "/submit1/",
             type        : 'POST',
             data        : formData,
+            async       : false,
             cache       : false,
             contentType : false,
             processData : false,
