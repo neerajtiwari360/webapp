@@ -99,9 +99,9 @@ def submit1(request):
 
         video_data.release()
         
-        shutil.make_archive("media/frames", 'zip', 'media/', 'data')
+        shutil.make_archive("static/frames", 'zip', 'media/', 'data')
         
-        return JsonResponse({'error':'', 'first_img':'/media/data/frame13.jpg',
-                             'zip_file' : '/media/frames.zip'})
+        return JsonResponse({'error':'', 'first_img':'/media/data/frame1.jpg',
+                             'zip_file' : '/static/frames.zip'})
     else:
         return HttpResponse('None')

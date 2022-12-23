@@ -1,0 +1,127 @@
+#nav_bar {
+    background-color: blue;
+}
+
+#main_div {
+    border-radius: 5px;
+    /* background-color: rgb(211, 173, 173); */
+    padding: 0.5%;
+    width: 90%;
+    margin-left: 5%;
+    height: 55px;
+    margin-top: 1%;
+}
+
+#div1 {
+    /* background-color: aqua; */
+    float: left;
+    padding: 0.3%;
+    width: 40%;
+    height: 40px;
+    margin-right: 0.5%;
+    /* margin-bottom: 1%; */
+    /* margin-top: 1%; */
+}
+
+#div2 {
+    /* background-color: rgb(221, 255, 0); */
+    float: right;
+    padding: 0.3%;
+    width: 15%;
+    height: 40px;
+    margin-right: 0.9%;
+    margin-top: 0.3%;
+    /* padding-bottom: 0%; */
+    padding-top: 0.1%;
+    /* margin-bottom: 0%; */
+}
+
+
+#div4 {
+    /* background-color: rgb(222, 22, 192); */
+    float: right;
+    padding: 0.3%;
+    width: 15%;
+    height: 40px;
+    /* margin-right: 0.9%; */
+    margin-top: 0.3%;
+    /* padding-bottom: 0%; */
+    padding-top: 0.1%;
+    /* margin-bottom: 0%; */
+}
+
+#dummy_input {
+    display: block;
+    width: 40%;
+    /* height: 40px; */
+    border: 1px solid #000;
+    border-radius: 5px;
+    text-align: center;
+    /* line-height: 40px; */
+    cursor: pointer;
+    background-color: #4CAF50;
+    padding: 1.3%;
+    padding-left: 2%;
+    padding-right: 2%;
+    opacity: 100%;
+    float: left;
+    /* margin-left: 20%; */
+    margin-top: 0%;
+    margin-bottom: 0%;
+    font-family: 'Times New Roman';
+    font-size: 100%;
+}
+
+#videoInput {
+    /* display: block; */
+    width: 40%;
+    /* height: 40px; */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    background-color: rgb(255, 77, 0);
+    padding: 0%;
+    opacity: 0%;
+    float: left;
+    /* margin-left: 20%; */
+    /* top: -43px; */
+    left: -205px;
+    position: relative;
+}
+
+#frameInput {
+    float: right;
+    /* display: inline; */
+    padding: 1%;
+    top: -45px;
+    margin-right: 12%;
+    position: relative;
+    border-radius: 5px;
+}
+
+#body_div {
+    /* background-color: #4CAF50; */
+    width: 50%;
+    margin-left: 24%;
+    margin-top: 2%;
+    padding: 1%;
+}
+
+#upload_prog {
+    margin-bottom: 0%;
+}
+
+#div5 {
+    margin-top: 3%;
+}
+
+#generate_id {
+    margin-bottom: 1%;
+}
+
+/* #frame_img {
+    padding: 2%;
+    padding-top: 0%;
+} */

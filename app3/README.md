@@ -1,4 +1,4 @@
-# Webapp - App1
+# Webapp - App3
 Demo webapp, with react frontend and django backend for basic image processing.
 
 ## Running the app
@@ -20,5 +20,5 @@ Demo webapp, with react frontend and django backend for basic image processing.
 ## Demo on colab
 <hr/>
 
-Everything is demonstarted on the [colab](https://colab.research.google.com/drive/1-GMn6geUGnJWOo-YfQbkTZFZhpZBDgMB?authuser=1#scrollTo=D8PEh_ynmY-6)
+Everything is demonstarted on the [colab](https://colab.research.google.com/drive/18QhE_3t1OQ1JfeJd1e0GJCp9wry8To7E?usp=sharing)
 
