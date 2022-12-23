@@ -1,0 +1,57 @@
+{% extends "basic.html" %}
+
+{% load static %}
+
+{% block load_css %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="{% static 'home.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+
+    <div id="main_div">
+        <div id="div4">
+            <a download="frames.zip" href="#" id="down_link2">
+                <button class="btn btn-outline-success my-2 my-sm-0" id="downloadZipBtn">Download ZIP</button>
+            </a>
+        </div>
+    
+        <form method="POST" enctype="multipart/form-data" id="form1">
+            {% csrf_token %}
+            <div id="div1">
+                <p id="dummy_input">Upload Video</p>
+                <input type="file" id="videoInput" accept="video/*">
+                <input type="number" id="frameInput" placeholder="Number of Frames">
+            </div>
+        </form>
+    
+        <div id="div2">
+            <button class="btn btn-outline-success my-2 my-sm-0" id="createFramesBtn" onclick="create_frames()">Generate Frames</button>
+        </div>
+    </div>
+
+    <div id="body_div">
+        <div class="form-group" style="margin-bottom: 1%;">
+            <p id="upload_prog">Upload Progress : </p>
+        </div>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0"
+                aria-valuemin="0" aria-valuemax="100" id="prog_bar"></div>
+        </div>
+
+        <div id="div5">
+            <p id="generate_id">Frames Generation : Not yet started</p>
+
+            <div id="frame_img">
+                <img id="first_img" src="/media/frame.png" alt="First frame" style="width: 100%;">
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="{% static '/home.js' %}" type="text/javascript"></script>
+
+{% endblock %}
