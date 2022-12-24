@@ -38,6 +38,6 @@ def submit1(request):
         # This main.py should store the output .glb file inside static with name model.glb
         os.system("python3 module/main.py")
         
-        return JsonResponse({'model' : '/static/model.glb'})
+        return JsonResponse({'model' : '/media/model.glb'})
     else:
         return HttpResponse('None')
