@@ -28,8 +28,8 @@ function previewImage() {
     {
         console.log("@@@@");
         preview.src = window.location.origin.concat('/media/temp.png');
-        down_link.href = window.location.origin.concat('/media/model.glb');
-        model.src = window.location.origin.concat('/media/model.glb');
+        down_link.href = window.location.origin.concat('/static/default.glb');
+        model.src = window.location.origin.concat('/static/default.glb');
         document.getElementById("prev_img").innerHTML = "Preview image";
     }  
 }
@@ -59,7 +59,6 @@ function create_model() {
             url         : "/submit1/",
             type        : 'POST',
             data        : formData,
-            async       : false,
             cache       : false,
             contentType : false,
             processData : false,
