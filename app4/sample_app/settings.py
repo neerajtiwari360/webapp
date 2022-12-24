@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-9$ya6sbher6jr54(&dokqs&&n-sweg$^_^@86$*7e6z94dpf9s
 DEBUG = True
 
 ALLOWED_HOSTS = ['colab.research.google.com', '127.0.0.1', '*']
-CSRF_TRUSTED_ORIGINS = ['https://*.colab.research.google.com','https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://*.colab.research.google.com','https://*.127.0.0.1',
+                        'https://*colab.googleusercontent.com']
 CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = False
 
