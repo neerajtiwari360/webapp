@@ -5,7 +5,12 @@ from PIL import Image
 import open3d as o3d
 from pathlib import Path
 import os
-os.remove("./static/model.glb")
+
+myfile = "./static/model.glb"
+# If file exists, delete it.
+if os.path.isfile(myfile):
+    os.remove(myfile)
+
 feature_extractor = DPTFeatureExtractor.from_pretrained("Intel/dpt-large")
 model = DPTForDepthEstimation.from_pretrained("Intel/dpt-large")
 print(">>> Inside 3D generation module")
